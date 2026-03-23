@@ -1,7 +1,19 @@
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 
-export function Welcome({ message }: { message: string }) {
+type Todo = {
+  id: number;
+  title: string;
+  completed: boolean;
+};
+
+export function Welcome({
+  message,
+  todos,
+}: {
+  message: string;
+  todos: Todo[];
+}) {
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
@@ -41,6 +53,28 @@ export function Welcome({ message }: { message: string }) {
               <li className="self-stretch p-3 leading-normal">{message}</li>
             </ul>
           </nav>
+          <section className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
+            <h2 className="text-center text-gray-700 dark:text-gray-200">
+              Todos (D1 + Drizzle)
+            </h2>
+            {todos.length === 0 ? (
+              <p className="text-sm text-gray-500 text-center">
+                No todos yet. Add one directly in D1 to confirm reads.
+              </p>
+            ) : (
+              <ul className="space-y-2">
+                {todos.map((todo) => (
+                  <li key={todo.id} className="text-sm">
+                    <span
+                      className={todo.completed ? "line-through text-gray-500" : ""}
+                    >
+                      {todo.title}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
         </div>
       </div>
     </main>

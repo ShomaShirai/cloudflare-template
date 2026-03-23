@@ -21,7 +21,7 @@ The difference from the official template is that it uses `rolldown-vite` and em
 Install the dependencies:
 
 ```bash
-npm install
+make install
 ```
 
 ### Development
@@ -29,7 +29,7 @@ npm install
 Start the development server with HMR:
 
 ```bash
-npm run dev
+make dev
 ```
 
 Your application will be available at `http://localhost:5173`.
@@ -39,7 +39,7 @@ Your application will be available at `http://localhost:5173`.
 Preview the production build locally:
 
 ```bash
-npm run preview
+make preview
 ```
 
 If startup fails, delete `.wrangler/deploy/config.json`.
@@ -49,7 +49,7 @@ If startup fails, delete `.wrangler/deploy/config.json`.
 Preview the production build remote:
 
 ```bash
-npm run preview-remote
+make preview-remote
 ```
 
 ## Building for Production
@@ -57,7 +57,7 @@ npm run preview-remote
 Create a production build:
 
 ```bash
-npm run build
+make build
 ```
 
 ## Deployment
@@ -67,13 +67,39 @@ Deployment is done using the Wrangler CLI.
 To build and deploy directly to production:
 
 ```sh
-npm run deploy
+make deploy
 ```
 
 check deployment size without deploying
 
 ```sh
-npm run dry-run
+make dry-run
+```
+
+## Database (Drizzle + D1)
+
+Generate migration SQL from schema changes:
+
+```bash
+make db-generate
+```
+
+Apply migrations to local D1:
+
+```bash
+make db-migrate-local
+```
+
+Apply migrations to remote D1:
+
+```bash
+make db-migrate-remote
+```
+
+Run type checks (including `wrangler types`):
+
+```bash
+make typecheck
 ```
 
 To deploy a preview URL:
