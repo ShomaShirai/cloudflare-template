@@ -87,13 +87,19 @@ make db-generate
 Apply migrations to local D1:
 
 ```bash
-make db-migrate-local
+make apply
 ```
 
-Apply migrations to remote D1:
+Check current applied migration versions:
 
 ```bash
-make db-migrate-remote
+make current
+```
+
+Roll back remote D1 with Time Travel:
+
+```bash
+make rollback TO=2026-03-23T00:00:00Z
 ```
 
 Run type checks (including `wrangler types`):
